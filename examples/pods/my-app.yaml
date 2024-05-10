@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: my-app
+   labels:
+      app: my-app
+      env: test
+      tier: frontend
+      owner: ValeriiVasianovych
+spec:
+   containers:
+      - name: my-app-httpd
+        image: httpd:latest
+        ports:
+           - containerPort: 80
+      - name: my-app-tomcat
+        image: tomcat:latest
+        ports:
+           - containerPort: 8080

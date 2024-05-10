@@ -1,0 +1,31 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+   name: nginx-cluster
+   region: us-east-1
+
+vpc:
+   id: vpc-06a8a28697b6986dc
+   subnets:
+      public:
+         us-east-1a:
+            id: subnet-09f9f04eb1dd6c76d
+         us-east-1b:
+            id: subnet-0392c4dfd00e88cca
+
+nodeGroups:
+   - name: worker-node-group-1
+     instanceType: t2.micro
+     desiredCapacity: 1
+     ssh:
+        publicKeyName: ServersKey
+     subnets:
+        - subnet-09f9f04eb1dd6c76d
+   - name: worker-node-group-2
+     instanceType: t2.micro
+     desiredCapacity: 1
+     ssh:
+        publicKeyName: ServersKey
+     subnets:
+        - subnet-0392c4dfd00e88cca
