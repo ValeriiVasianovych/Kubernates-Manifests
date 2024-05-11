@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-as-deployment
+  labels:
+    app: httpd
+    owner: Valerii_Vasianovych
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      example: httpd
+  template:
+    metadata:
+      labels:
+        example: httpd
+    spec:
+      containers:
+        - name: httpd-as-container
+          image: httpd:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: auto-scaling-httpd
+  labels:
+    app: httpd
+    owner: Valerii_Vasianovych
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: httpd-as-deployment
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

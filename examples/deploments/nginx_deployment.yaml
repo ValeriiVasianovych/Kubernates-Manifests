@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web-deployment
+  labels:
+    app: nginx
+    owner: Valerii_Vasianovych
+spec:
+  selector:
+    matchLabels:
+      example: nginx
+  template:
+    metadata:
+      labels:
+        example: nginx
+    spec:
+      containers:
+        - name: nginx-web-server
+          image: nginx:latest
+          ports:
+            - containerPort: 80

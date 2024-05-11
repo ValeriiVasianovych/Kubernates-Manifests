@@ -6,13 +6,13 @@ metadata:
    region: us-east-1
 
 vpc:
-   id: vpc-06a8a28697b6986dc
+   id: your-vpc-id
    subnets:
       public:
          us-east-1a:
-            id: subnet-09f9f04eb1dd6c76d
+            id: your-subnet-id
          us-east-1b:
-            id: subnet-0392c4dfd00e88cca
+            id: your-subnet-id
 
 nodeGroups:
    - name: worker-node-group-1
@@ -21,11 +21,11 @@ nodeGroups:
      ssh:
         publicKeyName: ServersKey
      subnets:
-        - subnet-09f9f04eb1dd6c76d
+        - your-subnet-id
    - name: worker-node-group-2
      instanceType: t2.micro
      desiredCapacity: 1
      ssh:
         publicKeyName: ServersKey
      subnets:
-        - subnet-0392c4dfd00e88cca
+        - your-subnet-id
