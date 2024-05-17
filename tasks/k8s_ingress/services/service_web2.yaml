@@ -1,0 +1,16 @@
+# Service configuration
+apiVersion: v1
+kind: Service
+metadata:
+   name: nginx-service-web2
+   labels:
+      app: nginx-web2
+      env: dev
+spec:
+   selector:
+      app: nginx-web2
+   ports:
+      - protocol: TCP
+        port: 80
+        targetPort: 80
+   type: ClusterIP

@@ -1,0 +1,22 @@
+# Deployment configuration
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: nginx-deployment-web2
+   labels:
+      app: nginx-web2
+      env: dev
+spec:
+   selector:
+      matchLabels:
+         app: nginx-web2
+   template:
+      metadata:
+         labels:
+            app: nginx-web2
+      spec:
+         containers:
+            - name: nginx-web2
+              image: valeriivasianovych/eks_nginx_ingress:v2
+              ports:
+                 - containerPort: 80

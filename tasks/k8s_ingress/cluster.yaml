@@ -1,0 +1,31 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+   name: els-nginx-ingress
+   region: us-east-1
+
+vpc:
+   id: your_vpc_id
+   subnets:
+      public:
+         us-east-1a:
+            id: your_subnet_id
+         us-east-1b:
+            id: your_subnet_id
+
+nodeGroups:
+   - name: worker-node-group-1
+     instanceType: t3.medium
+     desiredCapacity: 1
+     subnets:
+        - us-east-1a
+     ssh:
+        publicKeyName: ServersKey
+   - name: worker-node-group-2
+     instanceType: t3.medium
+     desiredCapacity: 1
+     subnets:
+        - us-east-1b
+     ssh:
+        publicKeyName: ServersKey

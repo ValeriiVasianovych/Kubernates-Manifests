@@ -1,0 +1,22 @@
+# Deployment configuration
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: nginx-deployment-web1
+   labels:
+      app: nginx-web1
+      env: dev
+spec:
+   selector:
+      matchLabels:
+         app: nginx-web1
+   template:
+      metadata:
+         labels:
+            app: nginx-web1
+      spec:
+         containers:
+            - name: nginx-web1
+              image: valeriivasianovych/eks_nginx_ingress:v1
+              ports:
+                 - containerPort: 80
