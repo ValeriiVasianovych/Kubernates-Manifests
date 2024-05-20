@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}-deployment
+  labels:
+    app: {{ .Release.Name }}-deployment
+    owner: {{ .Values.owner }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-web
+          image: {{ .Values.container.image }}
+          ports:
+            - containerPort: 80

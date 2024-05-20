@@ -1,0 +1,17 @@
+# Deployment
+container:
+  image: valeriivasianovych/helm-k8s-nginx:latest
+
+# Horizontal Pod Autoscaler
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 2
+
+metrics:
+  cpu:
+    averageUtilization: 70
+  memory:
+    averageUtilization: 70
+
+owner: valerii-vasianovych
