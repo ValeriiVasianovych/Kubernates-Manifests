@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-web
+  labels:
+    app: httpd
+    owner: valerii-vasianovych
+    env: dev
+
+spec:
+  selector:
+    matchLabels:
+     app: httpd
+
+  template:
+    metadata:
+      labels:
+        app: httpd
+
+    spec:
+      containers:
+        - name: httpd
+          image: httpd:latest
+          ports:
+            - containerPort: 80
