@@ -1,15 +1,16 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-httpd
+  name: {{ .Values.names.hpaName }}
+  namespace: {{ .Values.namespace }}
   labels:
     owner: valerii-vasianovych
-    env: dev
+    env: {{ .Values.label.env }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: httpd-web
+    name: {{ .Values.names.metaName }}
   minReplicas: 2
   maxReplicas: 4
   metrics:

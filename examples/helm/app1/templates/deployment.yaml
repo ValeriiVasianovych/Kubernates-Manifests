@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.names.metaName }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.names.appName }}
+    owner: valerii-vasianovych
+    env: {{ .Values.label.env }}
+
+spec:
+  selector:
+    matchLabels:
+     app: {{ .Values.names.appName}}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.names.appName }}
+
+    spec:
+      containers:
+        - name: {{ .Values.names.appName }}
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80

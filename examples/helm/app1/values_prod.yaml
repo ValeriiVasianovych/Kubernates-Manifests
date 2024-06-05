@@ -1,0 +1,15 @@
+names:
+  metaName   : httpd-web-service-prod
+  appName    : httpd-web-prod
+  hpaName    : httpd-web-hpa-prod
+  serviceName: httpd-web-service-prod
+
+label:
+  env: prod
+
+namespace: production
+
+image:
+  name: httpd
+  tag: latest
+  

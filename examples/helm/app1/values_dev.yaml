@@ -1,0 +1,15 @@
+names:
+  metaName   : httpd-web-service-dev
+  appName    : httpd-web-dev
+  hpaName    : httpd-web-hpa-dev
+  serviceName: httpd-web-service-dev
+
+label:
+  env: dev
+
+namespace: development
+
+image:
+  name: httpd
+  tag: latest
+  
